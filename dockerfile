@@ -8,14 +8,14 @@ FROM php:8.1-fpm-buster
 # && docker-php-ext-install mcrypt pdo_mysql
 
 # Install Composer
-RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+# RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
 
 # Zainstaluj narzędzie do instalacji rozszerzeń PHP
 # COPY --from=mlocati/php-extension-installer /usr/bin/install-php-extensions /usr/bin/
 
 # Zainstaluj Composer
-# COPY --from=composer /usr/bin/composer /usr/bin/composer
+COPY --from=composer /usr/bin/composer /usr/bin/composer
 
 # Install Composer
 # RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
