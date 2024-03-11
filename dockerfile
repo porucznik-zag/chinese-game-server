@@ -1,15 +1,13 @@
-# Użyj oficjalnego obrazu PHP 8.1 z rozszerzeniem grpc
-FROM php:8.1-fpm
+FROM php:8.1-fpm-buster
 
-# Zainstaluj rozszerzenia PHP
-RUN docker-php-ext-install grpc
+# Zainstaluj narzędzie do instalacji rozszerzeń PHP
+COPY --from=mlocati/php-extension-installer /usr/bin/install-php-extensions /usr/local/bin/
 
 # Zainstaluj Composer
-COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
+COPY --from=composer:latest /usr/bin/composer /usr/local/bin/composer
 
-# Ustaw środowisko
-ENV APP_ENV=production \
-    APP_DEBUG=false
+# Zainstaluj i aktywuj rozszerzenia PHP
+RUN install-php-extensions grpc protobuf
 
 # Skopiuj pliki projektu
 COPY . /var/www/html
