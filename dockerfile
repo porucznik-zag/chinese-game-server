@@ -21,7 +21,7 @@ COPY --from=composer /usr/bin/composer /usr/bin/composer
 # RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
 # Zainstaluj i aktywuj rozszerzenia PHP
-RUN install-php-extensions grpc-1.43
+RUN install-php-extensions grpc-1.62.0
 
 # Skopiuj pliki projektu
 COPY . /var/www/html
