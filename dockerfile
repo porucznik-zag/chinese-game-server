@@ -12,7 +12,7 @@ FROM php:8.1-fpm-buster
 
 
 # Zainstaluj narzędzie do instalacji rozszerzeń PHP
-# COPY --from=mlocati/php-extension-installer /usr/bin/install-php-extensions /usr/bin/
+COPY --from=mlocati/php-extension-installer /usr/bin/install-php-extensions /usr/bin/
 
 # Zainstaluj Composer
 COPY --from=composer /usr/bin/composer /usr/bin/composer
@@ -28,7 +28,7 @@ COPY . /var/www/html
 
 
 # Zainstaluj zależności za pomocą Composer
-RUN composer install
+# RUN composer install
 
 # Ustaw katalog roboczy
 WORKDIR /var/www/html
