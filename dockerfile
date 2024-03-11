@@ -1,11 +1,11 @@
 FROM php:8.1-fpm-buster
 
 
-RUN apt-get update && apt-get install -y libmcrypt-dev \
-    mysql-client libmagickwand-dev --no-install-recommends \
-    && pecl install imagick \
-    && docker-php-ext-enable imagick \
-&& docker-php-ext-install mcrypt pdo_mysql
+# RUN apt-get update && apt-get install -y libmcrypt-dev \
+#     mysql-client libmagickwand-dev --no-install-recommends \
+#     && pecl install imagick \
+#     && docker-php-ext-enable imagick \
+# && docker-php-ext-install mcrypt pdo_mysql
 
 # Install Composer
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
@@ -21,7 +21,7 @@ RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local
 # RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
 # Zainstaluj i aktywuj rozszerzenia PHP
-RUN install-php-extensions grpc
+# RUN install-php-extensions grpc
 
 # Skopiuj pliki projektu
 COPY . /var/www/html
