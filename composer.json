@@ -1,0 +1,6 @@
+{
+    "require": {
+        "grpc/grpc": "^1.43.0",
+        "google/cloud-firestore": "^1.41"
+    }
+}
